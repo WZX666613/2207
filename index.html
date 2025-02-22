@@ -42,8 +42,6 @@
             // 小屏设备下合并导航栏到侧边栏
             mergeNavbar: true,
         }
-    </script>
-    <script>
         // 搜索配置(url：https://docsify.js.org/#/zh-cn/plugins?id=%e5%85%a8%e6%96%87%e6%90%9c%e7%b4%a2-search)
         window.$docsify = {
             search: {
@@ -60,31 +58,23 @@
                 hideOtherSidebarContent: false,
                 namespace: 'Docsify-Guide',
             },
-            chat: {
+          
+
+        }
+        window.$docsify = {
+
+        chat: {
             // 聊天面板标题
             title: "窗口",
             // 设置头像
             users: [
-            {},
-            {},
+            { nickname: "Yuki", avatar: "" },
+            { nickname: "Robot", avatar: "" },
             ],
+        },
+   };
+     
 
-        },
-        count:{
-        countable: true,
-        position: 'top',
-        margin: '10px',
-        float: 'right',
-        fontsize:'0.9em',
-        color:'rgb(90,90,90)',
-        language:'chinese',
-        localization: {
-        words: "",
-        minute: ""
-        },
-        isExpected: true
-    }
-  }
 
     </script>
     <!-- docsify的js依赖 -->
@@ -105,14 +95,9 @@
     <!--<script src="https://unpkg.com/docsify-progress/dist/progress.min.js"></script>-->
     <!--代码高亮-->
     <script src="//unpkg.com/prismjs/components/prism-c++.min.js"></script>
-    <!--开启黑暗模式切换-->>
-    <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script>
     <!--插入哔哩哔哩视频https://github.com/denganliang/docsify-bilibili-->
     <script src="//unpkg.com/docsify-bilibili/bilibili.min.js"></script>
     <!--聊天框支持-->
-    <!-- Docsify -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-
     <!-- Docsify Chat -->
     <script src="//cdn.jsdelivr.net/npm/docsify-chat/lib/docsify-chat.min.js"></script>
 
