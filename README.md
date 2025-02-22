@@ -1,226 +1,29 @@
-# 函数
+# 班史记载
 
-## map
+在s5赛季的寒假中，俊麟兄曾经向李墨丹青发送K歌邀请，想要用镁妙的歌声打败李墨丹青的专业，但似乎李墨丹青没有给俊麟兄这个机会，但俊麟还是给李墨旦青造成精神伤害（包括打王者被队友骂）。
 
-1. 定义：`map <下标类型 , 数据类型> 变量名;`
-2. map类似于桶 ， 但可以统计字符串和负数
-3. map时间复杂度高于桶，map存取时间复杂度为`O(log n)`，桶为`O(1)`
-4. map会自动初始化，但`char`类型变量不会被初始化为`''`而是ASCII编码为0的字符
+根据相关受害者报道，君子曾在s5赛季后的寒假邀请受害者小鸡和他的好朋友小猴出去进行人类身心快乐活动(简称玩)，君子还想顺便把自己的狗（楚哥）带上，但受害者小鸡表示这简简单单的邀请就让她遭受了重大心灵创伤。
 
-```c_cpp
-map <string , int> mp;//定义
-mp["xxx"] = 0;//将下标xxx设为1
-mp["xxx"] ++;//将下标xx增加1
-```
+近日，考古学家通过s1赛季的文字史料找出了楚哥的逆天事迹，他们从上古时期的z7手表中找到了楚哥的刑事审讯录音记录
 
-## 优先队列
+> 红豆：你为什么要骚扰陈忻霓，你知不知道这件事情很恶劣
+>
+> Sugar：我以为和抱男生一样的
+>
+> ---
+>
+> 红豆：（“大脑”未响应、“小脑”未响应、“脑干”未响应、“脊髓”未响应、“传入神经”未响应、“传出神经”未响应、“感受器”未响应）
+>
+> 考古学家：哇！这就是史！
 
-1. 可以直接获取最大的元素
-2. 定义：`priority_queue <数据类型> 变量名`
+# 背景
 
-!>和结构体搭配使用时需[重载运算符](/?id=重载运算符)
+俊麟兄表白被拒，面临成为小丑的危机
 
-```c_cpp
-priority_queue <int> pq;//定义
-pq.push(1);//往队列里放一个1
-pq.top();//得到最大的元素
-pq.pop();//删除最大的元素
-pq.size();//元素个数
-pq.empty();//是不是空的，如果是返回true，不是返回false
-```
+# 内容
 
-## 结构体
+> 或许将这份情感藏在心底才是正确选择，但自由意志杀不死你对她爱的感觉。当然，你痴心不改这不是错误，大劫大难之后人不该失去锐气不该失去热度，你镇定了但仍在燃烧，你平稳了却更加浩荡，你依然爱着那个姑娘，爱的山高海深不可动摇
 
-过于简单，这里不讲
-
-### 重载运算符
-
-可以自定义运算符的作用，这里只讲作为结构体成员函数用法
-
-```c_cpp
-//放在struct函数内
-bool operator < (node b) const//b为参数，bool为需重载运算符的类型 ， <为需重载的运算符
-{
-  if (id < b.id) return true;//bool类型必须返回true或false
-  else return false;
-}//重载运算符"<"
-```
-
-# 算法
-
-## dfs深搜
-
-示例：洛谷P1706全排列问题
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-int vis[15] , n;//vis:标记每个数是否已经被放了
-int ans[15];//格子数组
-
-void dfs(int x)//往第x个格子上放数，调用函数放下一个格子
-{
-	if (x > n)//到了第n+1个格子
-	{
-		for (int i = 1 ; i <= n ; i++)
-		{
-			cout << setw(5) << ans[i];
-		}
-		cout << "\n";
-		return;
-	}
-	for (int i = 1 ; i <= n ; i++)
-	{
-		if (vis[i] == 0)//i没被放进去
-		{
-			ans[x] = i;//把i放进第x个格子
-			vis[i] = 1;//标记i已经被放过了
-			dfs(x+1);//放下一个格子
-			ans[x] = 0;//还回去
-			vis[i] = 0;//i表只因为没放过
-		}
-	}
-}
-
-int main()
-{
-	cin >> n;
-	dfs(1);
-	
-	return 0;
- }
-```
-
-## 二维dfs
-
-以一本通1215迷宫为例：
-
-```c_cpp
-#include<bits/stdc++.h> 
-using namespace std;
-
-int dx[5] = {0 , 1 , -1 , 0 , 0};
-int dy[5] = {0 , 0 , 0 , 1 , -1};
-bool vis[105][105] = {0};
-char a[105][105];
-int n , ex , ey , sx , sy;
-
-//走到x,y
-void dfs(int x , int y)
-{
-	for (int i = 0 ; i <= 4 ; i++)
-	{
-		int nx = x + dx[i];
-		int ny = y + dy[i];
-		//往(nx,ny)走
-		if (nx >= 1 && nx <= n && ny >= 1 && ny <= n && a[nx][ny] == '.' && vis[nx][ny] == 0 && vis[ex][ey] == 0)
-		{
-			vis[nx][ny] = true;
-			dfs(nx , ny);
-		}
-	}
-}
-
-int main()
-{
-	int t;
-	cin >> t;
-	while(t--)
-	{
-		memset (vis , 0 , sizeof(vis));//清零
-		cin >> n;
-		for (int i = 1 ; i <= n ; i++)
-		{
-			for (int j = 1 ; j <= n ; j++)
-			{
-				cin >> a[i][j];
-			}
-		}
-		cin >> sx >> sy >> ex >> ey;
-		sx+=1;
-		ex+=1;
-		sy+=1;
-		ey+=1;
-		dfs(sx , sy);
-		if (vis[ex][ey] == 1) cout << "YES\n";
-		else cout << "NO\n";
-	}
-	
-	return 0;
-}
-```
-
-### 连通块问题
-
-连通块定义：能够互相走到的点为连通块
-
-1. 走的点不能超过范围
-2. 不能是“地雷”
-3. 一般来说，走过的点不再走
-4. 如果有终点，走到终点就不走
-5. 起点要特殊考虑
-
-以一本通1249：Lake Counting为例
-
-```c_cpp
-#include<bits/stdc++.h> 
-using namespace std;
-
-int dx[9] = {0 , -1 , -1 , -1 , 0 , 0 , 1 , 1 , 1};
-int dy[9] = {0 , -1 , 0 , 1 , -1 , 1 , -1 , 0 , 1};
-int vis[115][115] = {0};
-int cnt;
-char a[115][115];
-int n , sx , sy , m;
-
-void dfs(int x,int y)
-{ 
-	for(int i=1;i<=8;i++)
-	{ 
-		int nx=x+dx[i];
-		int ny=y+dy[i];
-		if(nx>=1 &&nx<=m &&ny>=1 &&ny<=n &&a[nx][ny]!='.'&&vis[nx][ny]==0)
-		{ 
-			vis[nx][ny]=cnt;
-			dfs(nx,ny);
-		}
-	
-	} 
-} 
-
-int main()
-{
-	cin >> m >> n;
-	for (int i = 1 ; i <= m ; i++)
-	{
-		for (int j = 1 ; j <= n ; j++)
-		{
-			cin >> a[i][j];	
-		}	
-	}
-	for (int i = 1 ; i <= m ; i++)
-	{
-		for(int  j = 1 ; j <= n ; j++)
-		{
-			if (a[i][j] != '.' && vis[i][j] == 0)
-			{
-				cnt++;
-				vis[i][j] = cnt;
-				dfs(i,j);
-			}
-		}	
-	}
-	cout << cnt; 
-	return 0;
-}
-```
-
-<!--PC版-->
-<div id="SOHUCS" ></div>
-<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-window.changyan.api.config({
-appid: 'cywsnJFBv',
-conf: 'prod_ae9aa65be3a3304559fb105d4866d3f0'
-});
-</script>
+> It might be a better choise to hide your love.But free mind didn'd take away your love.Of course,sticking to your place is not a mistake.Although after the heavenly tribulation,anybody shouldn't lose their brave and temprature You keep yourself cool,but you are still burning.You make your heart possible, but much more love hit your heart.You still love that girl,after mountains breaking and ocean drying but not change.
+>
+> Thank to JMhanhua group.
