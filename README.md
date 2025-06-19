@@ -513,7 +513,7 @@
 
 ![聊天记录长图,请下载后查看](https://cdn.luogu.com.cn/upload/image_hosting/u84ki6nm.png "聊天记录长图,请下载后查看")
 
-![史料来源](https://cdn.luogu.com.cn/upload/image_hosting/ti7ucs8l.png "史料来源")
+![史料来源](/liaotianjilu.PNG "史料来源")
 
 ![疑似刘俊麟写完后嫁祸给楚哥的](https://cdn.luogu.com.cn/upload/image_hosting/0cfgtaod.png "疑似刘俊麟写完后嫁祸给楚哥的")
 
